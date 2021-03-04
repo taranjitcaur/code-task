@@ -1,0 +1,38 @@
+<app-nav-bar></app-nav-bar>
+<div class="container mt-3">
+
+    <h1 class="h1 text-center">Create a new post</h1>
+
+    <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+        <div class="mb-3">
+            <label for="title" class="form-label fw-bold">Title:</label>
+            <input ngModel #title="ngModel" type="text" class="form-control" id="title" name="title" placeholder="Type title post...">
+        </div>
+        <div class="mb-3">
+            <label for="body" class="form-label fw-bold">Body:</label>
+            <textarea ngModel #body="ngModel" type="text" class="form-control" id="body" name="body" placeholder="Type body post..."></textarea>
+        </div>
+        <button type="submit" class="btn btn-dark border-0 rounded-0 pe-3 ps-3">Submit</button>
+    </form>
+
+    <hr class="mt-4 mb-5">
+
+    <h3 class="h3 text-center">New Post should be display below here...</h3>
+
+    <div *ngIf="newPosts.length === 0" class="h3 text-danger text-center">
+        <div class="spinner-border" role="status"></div>
+        No Posts...
+    </div>
+
+    <div class="row pt-3 gy-4"> 
+        <div *ngFor="let post of newPosts" class="col-12">
+          <div class="card bg-success text-white">
+              <div class="card-body">
+                  <h5 class="card-title fs-4">{{post.title}}</h5>
+                  <p class="card-text">{{post.body}}</p>
+              </div>
+          </div>
+        </div>
+    </div>
+
+</div>
